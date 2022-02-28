@@ -27,4 +27,3 @@ try:
     os.system(command)
 except Exception as error:
     print("Error:", error)
-    print("Teste")
