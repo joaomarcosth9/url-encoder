@@ -17,13 +17,19 @@ def encode_url(original_url):
     return encoded.upper()
 
 
-try:
-    url = input("Insert a URL: ")
-    print(encode_url(url))
+def main():
+    try:
+        url = input('Insert a URL: ')
+        encoded_url = encode_url(url)
+        print(encoded_url)
 
-    command = 'echo "{0}" | xclip -sel clip'.format(encode_url(url))
-    if os.name in ('nt', 'dos'):
-        command = 'echo "{0}" | clip.exe'.format(encode_url(url))
-    os.system(command)
-except Exception as error:
-    print("Error:", error)
+        command = f"echo {encoded_url} | xclip -sel clip"
+        if os.name in ('nt', 'dos'):
+            command = f"echo {encoded_url} | clip.exe"
+        os.system(command)
+    except Exception as error:
+        print('Error:', error)
+
+
+if __name__ == '__main__':
+    main()
